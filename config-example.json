@@ -1,0 +1,12 @@
+{
+  "serial": {
+    "port": "/dev/ttyUSB0",
+    "baudRate": 115200
+  },
+
+  "tcp": {
+    "host": "127.0.0.1",
+    "port": 1234,
+    "initMessage": "this is client ABC"
+  }
+}
