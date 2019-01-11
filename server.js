@@ -31,11 +31,12 @@ port.open((err) => {
   }
 });
 
-
-client.connect(CONFIG.tcp.port, CONFIG.tcp.host, () => {
-  console.log('Connected');
-  client.write(CONFIG.tcp.initMessage);
-});
+function connectTCP() {
+  client.connect(CONFIG.tcp.port, CONFIG.tcp.host, () => {
+    console.log('Connected');
+    client.write(CONFIG.tcp.initMessage);
+  });
+}
 
 client.on('close', () => {
   console.log('Connection closed');
@@ -43,4 +44,7 @@ client.on('close', () => {
 
 client.on('error', (err) => {
   console.log(err);
+  setTimeout(connectTCP, 1000);
 });
+
+connectTCP();
