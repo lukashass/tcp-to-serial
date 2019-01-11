@@ -32,11 +32,13 @@ port.open((err) => {
 });
 
 function connectTCP() {
-  client.connect(CONFIG.tcp.port, CONFIG.tcp.host, () => {
-    console.log('Connected');
-    client.write(CONFIG.tcp.initMessage);
-  });
+  client.connect(CONFIG.tcp.port, CONFIG.tcp.host);
 }
+
+client.on('connect', () => {
+  console.log('Connected');
+  client.write(CONFIG.tcp.initMessage);
+});
 
 client.on('close', () => {
   console.log('Connection closed');
