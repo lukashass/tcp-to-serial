@@ -42,11 +42,11 @@ client.on('connect', () => {
 
 client.on('close', () => {
   console.log('Connection closed');
+  setTimeout(connectTCP, 1000);
 });
 
 client.on('error', (err) => {
   console.log(err);
-  setTimeout(connectTCP, 1000);
 });
 
 connectTCP();
