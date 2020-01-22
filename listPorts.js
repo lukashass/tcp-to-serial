@@ -1,7 +1,9 @@
 const SerialPort = require('serialport');
 
-SerialPort.list((err, ports) => {
+SerialPort.list().then((ports) => {
   ports.forEach((port) => {
-    console.log(port.comName);
+    console.log(port.path);
   });
 });
+
+// this is kind of obsolete. just run: npx @serialport/list
